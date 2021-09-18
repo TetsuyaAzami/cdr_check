@@ -26,7 +26,6 @@ jobs:
       - image: circleci/mysql:8-ram
         name: "db"
         environment:
-          MYSQL_USER: root
           MYSQL_DB: myapp_test
           MYSQL_ROOT_PASSWORD: password
     environment:
