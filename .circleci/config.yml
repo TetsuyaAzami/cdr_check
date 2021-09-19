@@ -36,7 +36,9 @@ jobs:
       RAILS_ENV: test
     steps:
       - setup
-      - run: mysqld --default-authentication-plugin=mysql_native_password
+      - run:
+          name: change mysql-authentication
+          command: --default-authentication-plugin=mysql_native_password
       - run:
           name: rails db:migrate
           command: bundle exec rails db:migrate
