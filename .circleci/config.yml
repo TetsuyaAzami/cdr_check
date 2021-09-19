@@ -38,7 +38,7 @@ jobs:
       - setup
       - run:
           name: change mysql-authentication
-          command: --default-authentication-plugin=mysql_native_password
+          command: mysqld --default-authentication-plugin=mysql_native_password
       - run:
           name: rails db:migrate
           command: bundle exec rails db:migrate
