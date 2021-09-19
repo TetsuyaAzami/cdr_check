@@ -38,6 +38,12 @@ jobs:
     steps:
       - setup
       - run:
+          name: apt-get update
+          command: apt-get update
+      - run:
+          name: install mysql-client
+          command: apt-get install default-mysql-client
+      - run:
           name: rails db:migrate
           command: bundle exec rails db:migrate
       - run:
