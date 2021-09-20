@@ -4,7 +4,6 @@ orbs:
   ruby: circleci/ruby@1.1.2
   node: circleci/node@2
 
-# setup
 commands:
   setup:
     steps:
@@ -41,11 +40,13 @@ jobs:
           name: install mysql-client
           command: sudo apt-get install default-mysql-client
       - run:
+          name: rails db:create
+          command: bundle exec rails db:create
+      - run:
           name: Database setup
           command: bundle exec rails db:schema:load --trace
-      - run:
-          name: Rspec
-          command: bundle exec rspec
+      - ruby/rspec-test
+      - ruby/rubocop-check
 
 workflows:
   version: 2
